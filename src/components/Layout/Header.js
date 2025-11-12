@@ -4,7 +4,7 @@ const Header = ({ onMenuToggle, isAuthenticated, onLogout }) => {
   return (
     <header className="header">
       <div className="header-content">
-        <button className="menu-btn" onClick={onMenuToggle}>
+        <button className="menu-btn" onClick={onMenuToggle} aria-label="Toggle menu">
           ≡
         </button>
         <div className="logo">
@@ -12,10 +12,12 @@ const Header = ({ onMenuToggle, isAuthenticated, onLogout }) => {
           <span>Drama Club Registration</span>
         </div>
         <nav className="header-nav">
-          {isAuthenticated && (
+          {isAuthenticated ? (
             <button onClick={onLogout} className="logout-btn">
               Logout
             </button>
+          ) : (
+            <span className="welcome-text">Welcome to Drama Club</span>
           )}
         </nav>
       </div>
