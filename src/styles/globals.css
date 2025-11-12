@@ -398,24 +398,3 @@ body {
 }
 
 /* Home Page */
-.home-page {
-  min-height: calc(100vh - 80px);
-}
-
-.hero-section {
-  background: linear-gradient(135deg, rgba(102, 126, 234, 0.9), rgba(118, 75, 162, 0.9)),
-              url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><rect fill="%234a6fa5" width="1200" height="800"/><circle fill="%236b8cbc" cx="400" cy="200" r="100"/><circle fill="%236b8cbc" cx="800" cy="600" r="150"/></svg>');
-  color: white;
-  padding: 4rem 2rem;
-  text-align: center;
-}
-
-.hero-content h1 {
-  font-size: 3rem;
-  margin-bottom: 1rem;
-}
-
-.hero-content h2 {
-  font-size: 2rem;
-  margin-bottom: 1.5rem;
-  opacity: 0
