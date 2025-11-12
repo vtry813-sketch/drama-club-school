@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import Header from './Header';
-import Sidebar from './Sidebar';
+import Header from './Header.js';
+import Sidebar from './Sidebar.js';
 
 const Layout = ({ children, isAuthenticated, onLogout }) => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
