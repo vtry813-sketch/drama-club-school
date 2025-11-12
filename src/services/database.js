@@ -1,60 +1,44 @@
-import { MongoClient } from 'mongodb';
+// Service de base de données côté client avec localStorage
+let students = JSON.parse(localStorage.getItem('dramaClubStudents') || '[]');
 
-const MONGODB_URI = 'mongodb+srv://nimatest:nimatest@nimatest.bdf6c2a.mongodb.net/';
-const DATABASE_NAME = 'drama_club';
-const COLLECTION_NAME = 'students';
-
-let client;
-let database;
-
-export const connectToDatabase = async () => {
-  if (database) return database;
-
-  try {
-    client = new MongoClient(MONGODB_URI);
-    await client.connect();
-    database = client.db(DATABASE_NAME);
-    console.log('Connected to MongoDB successfully');
-    return database;
-  } catch (error) {
-    console.error('Error connecting to MongoDB:', error);
-    throw error;
-  }
+// Générer un ID unique
+const generateId = () => {
+  return Date.now().toString() + Math.random().toString(36).substr(2, 9);
 };
 
 export const getStudents = async () => {
-  try {
-    const db = await connectToDatabase();
-    const collection = db.collection(COLLECTION_NAME);
-    const students = await collection.find({}).toArray();
-    return students;
-  } catch (error) {
-    console.error('Error fetching students:', error);
-    return [];
-  }
+  // Retourne les étudiants depuis localStorage
+  return students;
 };
 
 export const addStudent = async (studentData) => {
-  try {
-    const db = await connectToDatabase();
-    const collection = db.collection(COLLECTION_NAME);
-    
-    const studentDocument = {
-      ...studentData,
-      createdAt: new Date(),
-      updatedAt: new Date()
-    };
+  const newStudent = {
+    ...studentData,
+    id: generateId(),
+    createdAt: new Date().toISOString(),
+    updatedAt: new Date().toISOString()
+  };
 
-    const result = await collection.insertOne(studentDocument);
-    return result;
-  } catch (error) {
-    console.error('Error adding student:', error);
-    throw error;
-  }
+  students.push(newStudent);
+  localStorage.setItem('dramaClubStudents', JSON.stringify(students));
+  
+  return { 
+    success: true, 
+    insertedId: newStudent.id,
+    student: newStudent
+  };
 };
 
-export const closeConnection = async () => {
-  if (client) {
-    await client.close();
-  }
+export const searchStudents = async (searchTerm) => {
+  if (!searchTerm) return students;
+  
+  return students.filter(student =>
+    student.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+};
+
+export const deleteStudent = async (studentId) => {
+  students = students.filter(student => student.id !== studentId);
+  localStorage.setItem('dramaClubStudents', JSON.stringify(students));
+  return { success: true };
 };
