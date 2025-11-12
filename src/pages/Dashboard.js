@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import StudentForm from '../components/Dashboard/StudentForm';
-import StudentList from '../components/Dashboard/StudentList';
-import SearchBar from '../components/Dashboard/SearchBar';
-import { getStudents, addStudent } from '../services/database';
+import StudentForm from '../components/Dashboard/StudentForm.js';
+import StudentList from '../components/Dashboard/StudentList.js';
+import SearchBar from '../components/Dashboard/SearchBar.js';
+import { getStudents, addStudent } from '../services/database.js';
 
 const Dashboard = () => {
   const [students, setStudents] = useState([]);
