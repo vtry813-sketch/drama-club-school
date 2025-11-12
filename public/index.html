@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
   <head>
     <meta charset="utf-8" />
     <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#4a6fa5" />
-    <meta name="description" content="Creative Minds Academy Drama Club Registration" />
-    <title>Creative Minds Academy - Drama Club</title>
+    <meta name="description" content="Academy Creative Minds - Inscription au Club de Théâtre" />
+    <title>Creative Minds Academy - Club de Théâtre</title>
     <style>
-      /* Loading animation */
+      /* Animation de chargement */
       .loading-screen {
         position: fixed;
         top: 0;
@@ -22,6 +22,7 @@
         z-index: 9999;
         color: white;
         font-family: Arial, sans-serif;
+        flex-direction: column;
       }
       
       .spinner {
@@ -31,7 +32,7 @@
         width: 40px;
         height: 40px;
         animation: spin 1s linear infinite;
-        margin-right: 1rem;
+        margin-bottom: 1rem;
       }
       
       @keyframes spin {
@@ -41,15 +42,15 @@
     </style>
   </head>
   <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <noscript>Vous devez activer JavaScript pour utiliser cette application.</noscript>
     <div id="root">
       <div class="loading-screen">
         <div class="spinner"></div>
-        <div>Loading Creative Minds Academy...</div>
+        <div>Chargement de Creative Minds Academy...</div>
       </div>
     </div>
     <script>
-      // Remove loading screen when React loads
+      // Supprimer l'écran de chargement quand React charge
       window.addEventListener('load', function() {
         setTimeout(function() {
           const loadingScreen = document.querySelector('.loading-screen');
