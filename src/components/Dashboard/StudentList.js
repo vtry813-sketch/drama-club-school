@@ -4,17 +4,17 @@ const StudentList = ({ students }) => {
   if (students.length === 0) {
     return (
       <div className="no-students">
-        <p>Aucun étudiant trouvé. Inscrivez un nouvel étudiant pour commencer !</p>
+        <p>No students found. Register a new student to get started!</p>
       </div>
     );
   }
 
   return (
     <div className="student-list">
-      <h3>Étudiants Inscrits ({students.length})</h3>
+      <h3>Registered Students ({students.length})</h3>
       <div className="students-grid">
-        {students.map((student) => (
-          <div key={student.id} className="student-card">
+        {students.map((student, index) => (
+          <div key={index} className="student-card">
             <div className="student-header">
               {student.photo ? (
                 <img src={student.photo} alt={student.name} className="student-photo" />
@@ -25,20 +25,17 @@ const StudentList = ({ students }) => {
               )}
               <div className="student-info">
                 <h4>{student.name}</h4>
-                <span className="year-badge">Année {student.yearGroup}</span>
+                <span className="year-badge">Year {student.yearGroup}</span>
               </div>
             </div>
             
             <div className="student-details">
-              <p><strong>Date de naissance:</strong> {student.dateOfBirth}</p>
-              <p><strong>Mère:</strong> {student.motherName}</p>
-              <p><strong>Père:</strong> {student.fatherName}</p>
+              <p><strong>Date of Birth:</strong> {student.dateOfBirth}</p>
+              <p><strong>Mother:</strong> {student.motherName}</p>
+              <p><strong>Father:</strong> {student.fatherName}</p>
               {student.note && (
                 <p><strong>Note:</strong> {student.note}</p>
               )}
-              <p className="registration-date">
-                <small>Inscrit le: {new Date(student.createdAt).toLocaleDateString('fr-FR')}</small>
-              </p>
             </div>
           </div>
         ))}
