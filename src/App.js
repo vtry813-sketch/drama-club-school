@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
-import Layout from './components/Layout/Layout';
-import Login from './components/Auth/Login';
-import Dashboard from './pages/Dashboard';
-import Home from './pages/Home';
-import About from './pages/About';
-import Contact from './pages/Contact';
+import Layout from './components/Layout/Layout.js';
+import Login from './components/Auth/Login.js';
+import Dashboard from './pages/Dashboard.js';
+import Home from './pages/Home.js';
+import About from './pages/About.js';
+import Contact from './pages/Contact.js';
 import './App.css';
 
 function App() {
